@@ -104,9 +104,12 @@ def trade():
 def order_book():
     # Your code here
     # Note that you can access the database session using g.session
-    data = g.session.query(Order).all()
-    result = {"data": data}
-    return result
+    orders = [order for order in g.session.query(Order).all()]
+    data = []
+    for existing_oder in orders:
+        data.append(json.dumps(existing_oder))
+    result = {"data": orders}
+    return jsonify(result)
 
 
 if __name__ == '__main__':
