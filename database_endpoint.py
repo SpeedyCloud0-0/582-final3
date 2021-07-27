@@ -36,7 +36,7 @@ def shutdown_session(response_or_exc):
 """
 
 
-def log_message(d)
+def log_message(d):
     # Takes input dictionary d and writes it to the Log table
     pass
 
