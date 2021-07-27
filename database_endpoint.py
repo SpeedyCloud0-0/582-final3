@@ -77,7 +77,7 @@ def trade():
         # Check what platform it is
         signature = content.get("sig")
         message = json.dumps(content.get("payload"))
-        pk = content.get("payload").get("pk")
+        pk = content.get("payload").get("sender_pk")
         platform = content.get("payload").get("platform")
         if platform == 'Ethereum':
             # Check if signature is valid
