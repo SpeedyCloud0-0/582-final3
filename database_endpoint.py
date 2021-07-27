@@ -109,7 +109,8 @@ def order_book():
     for existing_oder in orders:
         data.append(existing_oder)
     result = {"data": data}
-    return jsonify(result)
+    result = json.dumps(result)
+    return result
 
 
 if __name__ == '__main__':
