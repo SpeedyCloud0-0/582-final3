@@ -107,7 +107,7 @@ def order_book():
     orders = [order for order in g.session.query(Order).all()]
     data = []
     for existing_oder in orders:
-        data.append(json.dumps(existing_oder))
+        data.append(existing_oder)
     result = {"data": orders}
     return jsonify(result)
 
