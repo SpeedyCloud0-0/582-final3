@@ -110,8 +110,7 @@ def order_book():
     for existing_oder in orders:
         json_order = {'sender_pk': existing_oder.sender_pk, 'receiver_pk': existing_oder.receiver_pk,
                       'buy_currency': existing_oder.buy_currency, 'sell_currency': existing_oder.sell_currency,
-                      'buy_amount': existing_oder.buy_amount, 'sell_amount': existing_oder.sell_amount,
-                      'sig': existing_oder.sig}
+                      'buy_amount': existing_oder.buy_amount, 'sell_amount': existing_oder.sell_amount}
 
         data.append(json_order)
     result = {"data": data}
