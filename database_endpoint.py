@@ -108,7 +108,7 @@ def order_book():
     data = []
     for existing_oder in orders:
         data.append(existing_oder)
-    result = {"data": orders}
+    result = {"data": data}
     return jsonify(result)
 
 
