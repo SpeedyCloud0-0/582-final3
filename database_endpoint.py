@@ -91,7 +91,8 @@ def trade():
             order = content['payload']
             order_obj = Order(sender_pk=order['sender_pk'], receiver_pk=order['receiver_pk'],
                               buy_currency=order['buy_currency'], sell_currency=order['sell_currency'],
-                              buy_amount=order['buy_amount'], sell_amount=order['sell_amount'], signature=content['sig'])
+                              buy_amount=order['buy_amount'], sell_amount=order['sell_amount'],
+                              signature=content['sig'])
             g.session.add(order_obj)
             g.session.commit()
             return jsonify(True)
@@ -107,10 +108,14 @@ def order_book():
     orders = [order for order in g.session.query(Order).all()]
     data = []
     for existing_oder in orders:
-        data.append(existing_oder)
+        json_order = {'sender_pk': existing_oder.sender_pk, 'receiver_pk': existing_oder.receiver_pk,
+                      'buy_currency': existing_oder.buy_currency, 'sell_currency': existing_oder.sell_currency,
+                      'buy_amount': existing_oder.buy_amount, 'sell_amount': existing_oder.sell_amount,
+                      'sig': existing_oder.sig}
+
+        data.append(json_order)
     result = {"data": data}
-    result = json.dumps(result)
-    return result
+    return jsonify(result)
 
 
 if __name__ == '__main__':
